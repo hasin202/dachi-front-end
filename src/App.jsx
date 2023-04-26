@@ -27,7 +27,7 @@ export default function App() {
       {/* {fetchedData.map((data) => (
         <pre key={data.ticket_id}>{JSON.stringify(data)}</pre>
       ))} */}
-      <div className="flex px-16 py-12">
+      <div className="border-box flex px-16 py-24 min-h-screen">
         <Nav />
         <Routes>
           <Route path="marketplace" element={<Marketplace />} />
