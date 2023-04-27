@@ -3,33 +3,17 @@ import { Routes, Route } from "react-router-dom";
 import Nav from "./components/nav.jsx";
 import Marketplace from "./components/marketplace.jsx";
 import Cart from "./components/cart.jsx";
+import UserTickets from "./components/users_tickets.jsx";
 
 export default function App() {
-  const [fetchedData, setFetchedData] = useState([]);
-  useEffect(() => {
-    const getData = async () => {
-      const data = await axios.get("http://localhost:3000/tickets");
-      // console.log(data);
-      setFetchedData(data.data);
-    };
-    getData();
-  }, []);
-
-  console.log("data");
-  fetchedData.map((data) => {
-    console.log(data);
-  });
-
   return (
     <>
-      {/* {fetchedData.map((data) => (
-        <pre key={data.ticket_id}>{JSON.stringify(data)}</pre>
-      ))} */}
-      <div className="border-box flex px-16 py-24 min-h-screen">
+      <div className="border-box flex px-32 py-24 h-screen">
         <Nav />
         <Routes>
           <Route path="marketplace" element={<Marketplace />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="my-tickets" element={<UserTickets />} />
         </Routes>
       </div>
     </>
