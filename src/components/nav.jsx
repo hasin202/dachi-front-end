@@ -5,7 +5,7 @@ const Nav = () => {
   const linkPaths = ["/marketplace", "/cart", "/my-tickets", "/card-details"];
 
   return (
-    <div className="w-1/4 pr-4 py-8 border-r-2 border-gray-400">
+    <div className="w-1/4 pr-4 mr-4 py-8 border-r border-gray-400">
       <p className="text-3xl font-black mb-4">DACHI</p>
       <nav className="flex flex-col gap-1 text-xl">
         {linkNames.map((link, i) => (
