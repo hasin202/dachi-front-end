@@ -2,15 +2,9 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 
-const Ticket = ({
-  ticket_id,
-  event_name,
-  address,
-  postcode,
-  price,
-  start,
-  end,
-}) => {
+const Ticket = (data) => {
+  data = data.data
+  const {ticket_id, event_name, address, postcode, price, start, end} = data
   const [startDateFormatted, setStartDateFormatted] = useState();
   const [endDateFormatted, setEndDateFormatted] = useState();
   const [startTimeFormatted, setStartTimeFormatted] = useState();

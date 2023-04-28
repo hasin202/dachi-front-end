@@ -13,7 +13,7 @@ const Marketplace = () => {
   return (
     <div className="flex flex-col w-full px-4 gap-8 h-full overflow-y-scroll">
       {fetchedData.map((data) => (
-        <Ticket key={data.ticket_id} {...data} />
+        <Ticket key={data.ticket_id} data={data} />
       ))}
     </div>
   );
