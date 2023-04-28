@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+
 
 const Ticket = ({
   ticket_id,
@@ -42,7 +44,7 @@ const Ticket = ({
   }, []);
 
   return (
-    <div className="w-full shrink-0 flex h-60 border border-gray-400 rounded-2xl px-12 py-8 items-center justify-between">
+    <NavLink to={`${ticket_id}`} className="w-full shrink-0 flex h-60 border border-gray-400 rounded-2xl px-12 py-8 items-center justify-between">
       <div className="flex h-full">
         <div className="flex flex-col h-full text-xl justify-center gap-2 border-r border-gray-400 pr-12">
           <p>{`${startDateFormatted} -`}</p>
@@ -62,7 +64,7 @@ const Ticket = ({
         </div>
       </div>
       <p className="text-5xl text-purple-700">{`£${price}`}</p>
-    </div>
+    </NavLink>
   );
 };
 
