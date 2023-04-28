@@ -38,7 +38,7 @@ const Ticket = (data) => {
   }, []);
 
   return (
-    <NavLink to={`${ticket_id}`} className="w-full shrink-0 flex h-60 border border-gray-400 rounded-2xl px-12 py-8 items-center justify-between">
+    <NavLink state={{data:data}} to={`${ticket_id}`} className="w-full shrink-0 flex h-60 border border-gray-400 rounded-2xl px-12 py-8 items-center justify-between">
       <div className="flex h-full">
         <div className="flex flex-col h-full text-xl justify-center gap-2 border-r border-gray-400 pr-12">
           <p>{`${startDateFormatted} -`}</p>
