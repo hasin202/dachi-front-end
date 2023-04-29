@@ -7,6 +7,7 @@ const IndividualTicket = () => {
   const { state } = useLocation();
   const [fetchedData, setFetchedData] = useState([]);
   const [error, setError] = useState();
+  const [inCart, setInCart] = useState(false);
   if (!state) {
     return (
       <Error
@@ -31,6 +32,7 @@ const IndividualTicket = () => {
   if (error) {
     return <Error errorInfo={error} />;
   }
+
   const { event_name, address, postcode, start, end, description, price } =
     fetchedData;
 
@@ -64,9 +66,23 @@ const IndividualTicket = () => {
     setStartTimeFormatted(formatted_start_time);
     setEndDateFormatted(formatted_end_date);
     setEndTimeFormatted(formatted_end_time);
+
+    if (localStorage.getItem("cart")) {
+      let cart = JSON.parse(localStorage.getItem("cart"));
+      if (cart.find((ticket) => ticket.ticket_id === state.ticket_id))
+        setInCart(true);
+    }
   }, [fetchedData]);
 
-  return (
+  const addToCart = () => {
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    cart.push(fetchedData);
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+  return !event_name ? (
+    ""
+  ) : (
     <div className="w-full ml-12 flex flex-col justify-between">
       <div>
         <div className="flex text-5xl font-extrabold">
@@ -84,9 +100,16 @@ const IndividualTicket = () => {
         </p>
         <p className="text-xl font-light">{description}</p>
       </div>
-      <button className="w-full py-2 text-lg font-light bg-purple-700 text-white rounded-md focus:bg-purple-500">
-        ADD TO CART
-      </button>
+      {inCart ? (
+        <p>already in cart</p>
+      ) : (
+        <button
+          onClick={addToCart}
+          className="w-full py-2 text-lg font-light bg-purple-700 text-white rounded-md focus:bg-purple-500"
+        >
+          ADD TO CART
+        </button>
+      )}
     </div>
   );
 };
