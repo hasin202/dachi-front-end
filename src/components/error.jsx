@@ -1,7 +1,7 @@
 import errorImg from "../assets/404.png";
 
-const Error = ({ error }) => {
-  const { heading, body } = error;
+const Error = ({ errorInfo }) => {
+  const { heading, body } = errorInfo;
   return (
     <div className="w-full flex flex-col gap-2">
       <img src={errorImg} />

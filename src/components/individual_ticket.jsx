@@ -10,7 +10,7 @@ const IndividualTicket = () => {
   if (!state) {
     return (
       <Error
-        error={{
+        errorInfo={{
           heading: "Not a valid ticket",
           body: "Please select one from the list of displayed tickets",
         }}
@@ -30,6 +30,7 @@ const IndividualTicket = () => {
     };
     getData();
   }, []);
+
   //   return (
   //     <div className="w-full ml-12 flex flex-col justify-between">
   //       <div>
