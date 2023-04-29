@@ -5,13 +5,24 @@ import axios from "axios";
 
 const IndividualTicket = () => {
   const { state } = useLocation();
-  console.log(state.ticket_id);
   const [fetchedData, setFetchedData] = useState([]);
   const [error, setError] = useState();
+  if (!state) {
+    return (
+      <Error
+        error={{
+          heading: "Not a valid ticket",
+          body: "Please select one from the list of displayed tickets",
+        }}
+      />
+    );
+  }
   useEffect(() => {
     const getData = async () => {
       axios
-        .get(`http://localhost:3000/tickets/${state.ticket_id}`)
+        .get(
+          `http://localhost:3000/tickets/e6d22ecf-8a2c-4944-8053-18e347cca111`
+        )
         .then((res) => setFetchedData(res.data[0]))
         .catch((error) => {
           if (error.response) setError(error.response.data);
@@ -19,9 +30,6 @@ const IndividualTicket = () => {
     };
     getData();
   }, []);
-  if (!state) {
-    return <Error />;
-  }
   //   return (
   //     <div className="w-full ml-12 flex flex-col justify-between">
   //       <div>
