@@ -20,9 +20,7 @@ const IndividualTicket = () => {
   useEffect(() => {
     const getData = async () => {
       axios
-        .get(
-          `http://localhost:3000/tickets/e6d22ecf-8a2c-4944-8053-18e347cca111`
-        )
+        .get(`http://localhost:3000/tickets/${state.ticket_id}`)
         .then((res) => setFetchedData(res.data[0]))
         .catch((error) => {
           if (error.response) setError(error.response.data);
@@ -30,18 +28,22 @@ const IndividualTicket = () => {
     };
     getData();
   }, []);
+  if (error) {
+    return <Error errorInfo={error} />;
+  }
+  const { event_name, address, postcode, price, start, end } = fetchedData;
 
-  //   return (
-  //     <div className="w-full ml-12 flex flex-col justify-between">
-  //       <div>
-  //         <p className="text-5xl font-extrabold mb-2 uppercase">{event_name}</p>
-  //         <p className="text-xl font-light text-gray-600">{`${address}, ${postcode}`}</p>
-  //       </div>
-  //       <button className="w-full py-2 text-lg font-light bg-purple-700 text-white rounded-md focus:bg-purple-500">
-  //         ADD TO CART
-  //       </button>
-  //     </div>
-  //   );
+  return (
+    <div className="w-full ml-12 flex flex-col justify-between">
+      <div>
+        <p className="text-5xl font-extrabold mb-2 uppercase">{event_name}</p>
+        <p className="text-xl font-light text-gray-600">{`${address}, ${postcode}`}</p>
+      </div>
+      <button className="w-full py-2 text-lg font-light bg-purple-700 text-white rounded-md focus:bg-purple-500">
+        ADD TO CART
+      </button>
+    </div>
+  );
 };
 
 export default IndividualTicket;
