@@ -1,16 +1,16 @@
 import { useLocation } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Error from "./error";
 import axios from "axios";
-import { formatDate, formatTime } from "../utils/formatting";
-import { addToCart, removerFromCart } from "../utils/cart";
+import { addToCart, removeFromCart } from "../utils/cart.js";
 import TicketInfo from "./ticket_info";
+import { cartContext } from "../../contexts/cart_context";
 
 const IndividualTicket = () => {
   const { state } = useLocation();
+  const [inCart, setInCart] = useContext(cartContext);
   const [fetchedData, setFetchedData] = useState([]);
   const [error, setError] = useState();
-  const [inCart, setInCart] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -39,6 +39,8 @@ const IndividualTicket = () => {
       let cart = JSON.parse(localStorage.getItem("cart"));
       if (cart.find((ticket) => ticket.ticket_id === state.ticket_id))
         setInCart(true);
+    } else {
+      setInCart(false);
     }
   }, [fetchedData, state]);
 
@@ -52,7 +54,7 @@ const IndividualTicket = () => {
         <TicketInfo ticket={fetchedData} state={state} />
         {inCart ? (
           <button
-            onClick={(event) => removerFromCart(event, fetchedData)}
+            onClick={(event) => removeFromCart(event, fetchedData)}
             className="w-full py-2 text-lg font-light bg-purple-700 text-white rounded-md focus:bg-purple-500"
           >
             REMOVE TO CART
