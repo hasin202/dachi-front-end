@@ -20,12 +20,15 @@ const IndividualTicket = () => {
           body: "Please select one from the list of displayed tickets",
         });
       } else {
-        axios
-          .get(`http://localhost:3000/tickets/${state.ticket_id}`)
-          .then((res) => setFetchedData(res.data[0]))
-          .catch((error) => {
-            if (error.response) setError(error.response.data);
-          });
+        try {
+          const res = await axios.get(
+            `http://localhost:3000/tickets/${state.ticket_id}`
+          );
+          const data = res.data;
+          setFetchedData(data[0]);
+        } catch (error) {
+          setError(error.response.data);
+        }
       }
     };
     getData();
