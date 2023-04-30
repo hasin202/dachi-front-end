@@ -4,11 +4,9 @@ import Error from "./error";
 import axios from "axios";
 import { addToCart, removeFromCart } from "../utils/cart.js";
 import TicketInfo from "./ticket_info";
-import { cartContext } from "../../contexts/cart_context";
 
 const IndividualTicket = () => {
   const { state } = useLocation();
-  const [inCart, setInCart] = useContext(cartContext);
   const [fetchedData, setFetchedData] = useState([]);
   const [error, setError] = useState();
 
@@ -52,21 +50,6 @@ const IndividualTicket = () => {
     event_name && (
       <div className="w-full ml-12 flex flex-col justify-between">
         <TicketInfo ticket={fetchedData} state={state} />
-        {inCart ? (
-          <button
-            onClick={(event) => removeFromCart(event, fetchedData)}
-            className="w-full py-2 text-lg font-light bg-purple-700 text-white rounded-md focus:bg-purple-500"
-          >
-            REMOVE TO CART
-          </button>
-        ) : (
-          <button
-            onClick={(event) => addToCart(event, fetchedData)}
-            className="w-full py-2 text-lg font-light bg-purple-700 text-white rounded-md focus:bg-purple-500"
-          >
-            ADD TO CART
-          </button>
-        )}
       </div>
     )
   );
