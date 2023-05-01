@@ -1,23 +1,23 @@
-import { useReducer, useContext } from "react";
-import { cartContext } from "./cart_context";
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "add":
-      return { count: state.count + 1 };
-  }
-};
+import { useContext } from "react";
+import cartContext from "./cart_context";
 
 const Reducer = () => {
-  const { name, age, sayHi } = useContext(cartContext);
-  const [state, dispatch] = useReducer(reducer, { count: 0 });
+  const { addToCart, cart } = useContext(cartContext);
 
-  const add = () => {
-    dispatch({ type: "add" });
+  const displayValue = () => {
+    console.log(cart);
   };
   return (
-    <div>
-      <button onClick={sayHi}>+</button>
-      <p>{state.count}</p>
+    <div className="flex w-full gap-2">
+      <button
+        className="w-1/2 bg-purple-700"
+        onClick={() => addToCart(Math.random() * 100)}
+      >
+        Add
+      </button>
+      <button className="w-1/2 bg-purple-700" onClick={displayValue}>
+        log state
+      </button>
     </div>
   );
 };
