@@ -1,11 +1,24 @@
 import { NavLink } from "react-router-dom";
 
 const Nav = () => {
-  const linkNames = ["Marketplace", "Cart", "My Tickets", "Card Details"];
-  const linkPaths = ["/marketplace", "/cart", "/my-tickets", "/card-details"];
+  const linkNames = [
+    "Home",
+    "Marketplace",
+    "Cart",
+    "My Tickets",
+    "Card Details",
+  ];
+  const linkPaths = [
+    "/",
+    "/marketplace",
+    "/cart",
+    "/my-tickets",
+    "/card-details",
+  ];
 
   const clear = () => {
     localStorage.clear();
+    location.reload();
   };
 
   return (
