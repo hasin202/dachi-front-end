@@ -16,6 +16,7 @@ export default function App() {
           <Route path="/" element={<Reducer />} />
           <Route path="marketplace" element={<Marketplace />} />
           <Route path="marketplace/:ticket_id" element={<IndividualTicket />} />
+          <Route path="cart/:ticket_id" element={<IndividualTicket />} />
           <Route path="cart" element={<Cart />} />
           <Route path="my-tickets" element={<UserTickets />} />
         </Routes>
