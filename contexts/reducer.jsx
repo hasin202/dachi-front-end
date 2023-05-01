@@ -14,6 +14,9 @@ const reducer = (state, action) => {
       localStorage.setItem("cart", JSON.stringify(state));
       location.reload();
       return [...state];
+    case "clear":
+      localStorage.removeItem("cart");
+      return [];
   }
 };
 
