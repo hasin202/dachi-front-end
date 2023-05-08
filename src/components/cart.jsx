@@ -1,4 +1,4 @@
-import cartContext from "../../contexts/cart_context";
+import cartContext from "../../contexts/cart/cart_context";
 import { useContext, useEffect, useState } from "react";
 import Ticket from "./tickets";
 
