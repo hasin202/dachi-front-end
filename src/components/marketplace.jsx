@@ -5,7 +5,7 @@ const Marketplace = () => {
   const [fetchedData, setFetchedData] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const data = await axios.get("http://localhost:3000/tickets");
+      const data = await axios.get("http://localhost:3012/tickets");
       setFetchedData(data.data);
     };
     getData();
