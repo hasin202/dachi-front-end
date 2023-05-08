@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Ticket from "./tickets.jsx";
+
 const Marketplace = () => {
   const [fetchedData, setFetchedData] = useState([]);
   useEffect(() => {
