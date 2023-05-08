@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import cartContext from "../../contexts/cart_context";
+import cartContext from "../../contexts/cart/cart_context";
 import React, { useState, useEffect, useContext } from "react";
 import Error from "./error";
 import axios from "axios";
@@ -22,7 +22,7 @@ const IndividualTicket = () => {
       } else {
         try {
           const res = await axios.get(
-            `http://localhost:3000/tickets/${state.ticket_id}`
+            `http://localhost:3012/tickets/${state.ticket_id}`
           );
           const data = res.data;
           setFetchedData(data[0]);
