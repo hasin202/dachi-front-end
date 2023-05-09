@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import cartContext from "../../contexts/cart_context";
+import cartContext from "../../contexts/cart/cart_context";
 import React, { useState, useEffect, useContext } from "react";
 import Error from "./error";
 import axios from "axios";
