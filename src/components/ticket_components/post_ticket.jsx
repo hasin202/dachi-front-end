@@ -7,6 +7,8 @@ const PostTicket = () => {
   const eventNameRef = useRef("");
   const forSaleRef = useRef("");
   const addressRef = useRef("");
+  const postcodeRef = useRef("");
+  const descriptionRef = useRef("");
   const [formResult, setFormResult] = useState("");
 
   const handleSubmit = (event) => {
@@ -31,29 +33,27 @@ const PostTicket = () => {
         <h1 className="text-4xl font-bold uppercase mb-4">Upload a ticket</h1>
         <div className="flex flex-col gap-4">
           <div className="flex w-full justify-between">
-            <div>
-              <input
-                className="border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="event-name"
-                type="text"
-                placeholder="event name"
-                maxLength={50}
-                required
-                ref={eventNameRef}
-              />
-            </div>
-            <div>
-              <input
-                className="border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="ticket-code"
-                type="text"
-                placeholder="ticket code"
-                pattern="TIK-\d{6}"
-                required
-                onChange={handleTicketCodeChange}
-                ref={ticketCodeRef}
-              />
-            </div>
+            <input
+              className="px-4 py-2 w-1/6 bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
+              id="event-name"
+              type="text"
+              placeholder="event name"
+              maxLength={50}
+              required
+              ref={eventNameRef}
+            />
+
+            <input
+              className="px-4 py-2 w-2/6 bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
+              id="ticket-code"
+              type="text"
+              placeholder="ticket code"
+              pattern="TIK-\d{6}"
+              required
+              onChange={handleTicketCodeChange}
+              ref={ticketCodeRef}
+            />
+
             <select
               id="for-sale"
               className="px-4 bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
@@ -65,15 +65,43 @@ const PostTicket = () => {
               <option value="FALSE">False</option>
               <option value="TRUE">True</option>
             </select>
+            <input
+              type="number"
+              placeholder="£ Price"
+              className="px-4 w-1/6 bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
+              min={0}
+              max={100}
+              step={1}
+              required
+            />
           </div>
-          <input
-            className="border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="address"
-            type="text"
-            placeholder="Address"
+          <div className="flex w-full gap-4">
+            <input
+              className="px-4 py-2 w-1/2 bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
+              id="address"
+              type="text"
+              placeholder="Address"
+              required
+              onChange={(event) => (addressRef.current = event.target.value)}
+              ref={addressRef}
+            />
+            <input
+              className="px-4 py-2 w-1/2 bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
+              id="postcode"
+              type="text"
+              placeholder="Postcode"
+              required
+              onChange={(event) => (postcodeRef.current = event.target.value)}
+              ref={postcodeRef}
+            />
+          </div>
+          <textarea
+            id="description"
+            name="description"
+            className="px-4 py-2 w-full bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
+            ref={descriptionRef}
+            onChange={(event) => (descriptionRef.current = event.target.value)}
             required
-            onChange={(event) => (addressRef.current = event.target.value)}
-            ref={addressRef}
           />
         </div>
         <button
