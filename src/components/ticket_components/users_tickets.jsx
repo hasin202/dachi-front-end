@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Error from "./error";
+import Error from "../error";
 
 const UserTickets = () => {
   // e748a855-f765-478b-bb92-a8cffeaba5bf
