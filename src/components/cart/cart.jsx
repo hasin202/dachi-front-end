@@ -1,10 +1,13 @@
 import cartContext from "../../../contexts/cart/cart_context";
 import { useContext, useEffect, useState } from "react";
 import Ticket from "../ticket_components/tickets";
+import axios from "axios";
+import { useAuth } from "../../../contexts/auth/AuthProvider";
 
 const Cart = () => {
   const { cart, clearCart } = useContext(cartContext);
   const [total, setTotal] = useState(0);
+  const { user } = useAuth();
 
   // const cart = JSON.parse(localStorage.getItem("cart"));
   useEffect(() => {
@@ -13,6 +16,23 @@ const Cart = () => {
     }, 0);
     setTotal(finalPrice);
   }, [cart]);
+
+  const buyTickets = async () => {
+    try {
+      const res = await axios.put(
+        "http://localhost:3012/buy",
+        { cart: cart, user: user.id },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      if (res.data) {
+        clearCart();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     cart && (
@@ -37,6 +57,7 @@ const Cart = () => {
             <button
               className="bg-purple-700 text-white w-full rounded py-1 font-light disabled:bg-black"
               disabled={!total}
+              onClick={buyTickets}
             >
               Buy tickets
             </button>
