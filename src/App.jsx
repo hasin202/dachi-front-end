@@ -24,10 +24,10 @@ import Reducer from "../contexts/useReduce.jsx";
 {
   /* <Route path="marketplace" element={<Marketplace />} /> */
 }
-//           <Route path="marketplace/:ticket_id" element={<IndividualTicket />} />
-//           <Route path="cart/:ticket_id" element={<IndividualTicket />} />
-//           <Route path="cart" element={<Cart />} />
-//           <Route path="my-tickets" element={<UserTickets />} />
+// <Route path="marketplace/:ticket_id" element={<IndividualTicket />} />
+// <Route path="cart/:ticket_id" element={<IndividualTicket />} />
+// <Route path="cart" element={<Cart />} />
+// <Route path="my-tickets" element={<UserTickets />} />
 //         </Routes>
 //       </div>
 //     </>
@@ -39,23 +39,27 @@ export default function App() {
   return (
     <>
       <NavBar />
-      <Container
-        className="d-flex w-100 align-items-center justify-content-center"
-        style={{ minHeight: "100vh" }}
-      >
+      <div className="flex w-full px-44 h-screen items-center content-center">
         {auth ? <Nav /> : ""}
-        <div className="w-100" style={{ maxWidth: "400px" }}>
+        <div className="w-full h-3/4">
           <Routes>
             <Route element={<AuthRoute />}>
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
               <Route path="marketplace" element={<Marketplace />} />
+              <Route
+                path="marketplace/:ticket_id"
+                element={<IndividualTicket />}
+              />
+              <Route path="cart/:ticket_id" element={<IndividualTicket />} />
+              <Route path="cart" element={<Cart />} />
+              <Route path="my-tickets" element={<UserTickets />} />
             </Route>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
           </Routes>
         </div>
-      </Container>
+      </div>
     </>
   );
 }
