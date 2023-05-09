@@ -1,27 +1,21 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Error from "../error";
+import { useAuth } from "../../../contexts/auth/AuthProvider";
 
 const UserTickets = () => {
-  // e748a855-f765-478b-bb92-a8cffeaba5bf
-  const user_id = `e748a855-f765-478b-bb92-a8cffaba5bf`;
+  const { user } = useAuth();
   const [error, setError] = useState();
 
   const [fetchedData, setFetchedData] = useState([]);
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/user/${user_id}`);
+        const res = await axios.get(`http://localhost:3012/user/${user.id}`);
         const data = res.data;
         setFetchedData(data[0]);
       } catch (error) {
-        console.log(error);
-        // if (error.code === "22P02") {
-        //   // setError({
-        //   //   heading: "You own no tickets.",
-        //   //   body: "You can either buy tickets from the marketplace or add tickets to your account from this page",
-        //   // });
-        // }
+        setError(error.response.data);
       }
     };
     getData();
