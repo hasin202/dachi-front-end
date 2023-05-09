@@ -50,7 +50,7 @@ const IndividualTicket = () => {
   const { event_name } = fetchedData;
   return (
     event_name && (
-      <div className="w-full ml-12 flex flex-col justify-between">
+      <div className="w-full h-full ml-12 flex flex-col justify-between">
         <TicketInfo ticket={fetchedData} state={state} />
         <CartButton
           inCart={inCart}
