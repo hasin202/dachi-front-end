@@ -1,18 +1,18 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useAuth } from "../../../contexts/auth/AuthProvider";
 
 const PostTicket = () => {
   const { user } = useAuth();
-  const [ticketCode, setTicketCode] = useState("");
-  const [eventName, setEventName] = useState("");
-  const [forSale, setForSale] = useState("");
+  const ticketCodeRef = useRef("");
+  const eventNameRef = useRef("");
+  const forSaleRef = useRef("");
+  const addressRef = useRef("");
   const [formResult, setFormResult] = useState("");
-  const [address, setAddress] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setFormResult(
-      `Submitted ticket code: ${ticketCode}, event name: ${eventName}, for sale: ${forSale}`
+      `Submitted ticket code: ${ticketCodeRef.current}, event name: ${eventNameRef.current}, for sale: ${forSaleRef.current}`
     );
   };
 
@@ -22,7 +22,7 @@ const PostTicket = () => {
     event.target.setCustomValidity(
       isValid ? "" : "Please enter a valid TIK code in the format TIK-123456"
     );
-    setTicketCode(value);
+    ticketCodeRef.current = value;
   };
 
   return (
@@ -39,8 +39,7 @@ const PostTicket = () => {
                 placeholder="event name"
                 maxLength={50}
                 required
-                value={eventName}
-                onChange={(event) => setEventName(event.target.value)}
+                ref={eventNameRef}
               />
             </div>
             <div>
@@ -51,15 +50,16 @@ const PostTicket = () => {
                 placeholder="ticket code"
                 pattern="TIK-\d{6}"
                 required
-                value={ticketCode}
                 onChange={handleTicketCodeChange}
+                ref={ticketCodeRef}
               />
             </div>
             <select
               id="for-sale"
               className="px-4 bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
-              value={forSale}
-              onChange={(event) => setForSale(event.target.value)}
+              onChange={(event) => (forSaleRef.current = event.target.value)}
+              ref={forSaleRef}
+              required
             >
               <option value="">For sale?</option>
               <option value="FALSE">False</option>
@@ -72,8 +72,8 @@ const PostTicket = () => {
             type="text"
             placeholder="Address"
             required
-            value={address}
-            onChange={(event) => setAddress(event.target.value)}
+            onChange={(event) => (addressRef.current = event.target.value)}
+            ref={addressRef}
           />
         </div>
         <button
