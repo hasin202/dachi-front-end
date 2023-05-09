@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../../contexts/auth/AuthProvider";
 
 const PostTicket = () => {
@@ -9,15 +9,30 @@ const PostTicket = () => {
   const addressRef = useRef("");
   const postcodeRef = useRef("");
   const descriptionRef = useRef("");
+  const [ticketInfo, setTicketInfo] = useState({});
   const priceRef = useRef(0);
-  const [formResult, setFormResult] = useState("");
+  //   const [formResult, setFormResult] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setFormResult(
-      `Submitted ticket code: ${ticketCodeRef.current}, event name: ${eventNameRef.current}, for sale: ${forSaleRef.current}`
-    );
+    // setFormResult(
+    //   `Submitted ticket code: ${ticketCodeRef.current}, event name: ${eventNameRef.current}, for sale: ${forSaleRef.current}`
+    // );
+    setTicketInfo({
+      ticket_owner: user.id,
+      ticket_code: ticketCodeRef.current.value,
+      event_name: eventNameRef.current.value,
+      address: addressRef.current.value,
+      postcode: postcodeRef.current.value,
+      for_sale: forSaleRef.current.value,
+      description: descriptionRef.current.value,
+      price: priceRef.current.value,
+    });
   };
+
+  useEffect(() => {
+    console.log(ticketInfo);
+  }, [ticketInfo]);
 
   const handleTicketCodeChange = (event) => {
     const value = event.target.value;
@@ -29,7 +44,7 @@ const PostTicket = () => {
   };
 
   return (
-    <div className="flex flex-col w-full px-4 gap-8 h-full overflow-y-scroll">
+    <div className="flex flex-col w-full px-4 gap-8 h-full overflow-y-scroll justify-center">
       <form onSubmit={handleSubmit}>
         <h1 className="text-4xl font-bold uppercase mb-4">Upload a ticket</h1>
         <div className="flex flex-col gap-4">
@@ -58,7 +73,6 @@ const PostTicket = () => {
             <select
               id="for-sale"
               className="px-4 bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
-              onChange={(event) => (forSaleRef.current = event.target.value)}
               ref={forSaleRef}
               required
             >
@@ -73,7 +87,6 @@ const PostTicket = () => {
               min={0}
               required
               ref={priceRef}
-              onChange={(event) => (priceRef.current = event.target.value)}
             />
           </div>
           <div className="flex w-full gap-4">
@@ -83,7 +96,6 @@ const PostTicket = () => {
               type="text"
               placeholder="Address"
               required
-              onChange={(event) => (addressRef.current = event.target.value)}
               ref={addressRef}
             />
             <input
@@ -92,7 +104,6 @@ const PostTicket = () => {
               type="text"
               placeholder="Postcode"
               required
-              onChange={(event) => (postcodeRef.current = event.target.value)}
               ref={postcodeRef}
             />
           </div>
@@ -101,18 +112,16 @@ const PostTicket = () => {
             name="description"
             className="px-4 py-2 w-full bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
             ref={descriptionRef}
-            onChange={(event) => (descriptionRef.current = event.target.value)}
             required
           />
         </div>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="w-full mt-4 bg-purple-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           type="submit"
         >
           Submit
         </button>
       </form>
-      {formResult && <p>{formResult}</p>}
     </div>
   );
 };
