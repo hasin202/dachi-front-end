@@ -1,6 +1,6 @@
 import cartContext from "../../../contexts/cart/cart_context";
 import { useContext, useEffect, useState } from "react";
-import Ticket from "../tickets";
+import Ticket from "../ticket_components/tickets";
 
 const Cart = () => {
   const { cart, clearCart } = useContext(cartContext);

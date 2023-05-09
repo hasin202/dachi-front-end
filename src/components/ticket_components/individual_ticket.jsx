@@ -1,10 +1,10 @@
 import { useLocation } from "react-router-dom";
-import cartContext from "../../contexts/cart/cart_context";
+import cartContext from "../../../contexts/cart/cart_context";
 import React, { useState, useEffect, useContext } from "react";
-import Error from "./error";
+import Error from "../error";
 import axios from "axios";
 import TicketInfo from "./ticket_info";
-import CartButton from "./cart/cart_button";
+import CartButton from "../cart/cart_button";
 
 const IndividualTicket = () => {
   const { addToCart, removeFromCart } = useContext(cartContext);

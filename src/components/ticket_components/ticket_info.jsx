@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { formatDate, formatTime } from "../utils/formatting";
+import { formatDate, formatTime } from "../../utils/formatting";
 
 const TicketInfo = ({ ticket, state }) => {
   const [startDateFormatted, setStartDateFormatted] = useState();

@@ -11,8 +11,8 @@ import { AuthProvider } from "../contexts/Auth/auth_context.jsx";
 import Nav from "./components/nav_bars/nav.jsx";
 import Marketplace from "./components/marketplace.jsx";
 import Cart from "./components/cart/cart.jsx";
-import UserTickets from "./components/users_tickets.jsx";
-import IndividualTicket from "./components/individual_ticket.jsx";
+import UserTickets from "./components/ticket_components/users_tickets.jsx";
+import IndividualTicket from "./components/ticket_components/individual_ticket.jsx";
 
 // export default function App() {
 //   return (

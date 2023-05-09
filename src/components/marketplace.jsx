@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import Ticket from "./tickets.jsx";
+import Ticket from "./ticket_components/tickets.jsx";
 
 const Marketplace = () => {
   const [fetchedData, setFetchedData] = useState([]);
