@@ -16,11 +16,6 @@ const Nav = () => {
     "/card-details",
   ];
 
-  const clear = () => {
-    localStorage.clear();
-    location.reload();
-  };
-
   return (
     <div className="w-1/3 pr-12 py-8 border-r border-gray-400 h-3/4">
       <p className="text-3xl font-black mb-4">DACHI</p>
@@ -39,12 +34,6 @@ const Nav = () => {
           </NavLink>
         ))}
       </nav>
-      <button
-        className="border border-purple-700 text-purple-700 w-full rounded py-1 font-light"
-        onClick={clear}
-      >
-        Clear cart
-      </button>
     </div>
   );
 };
