@@ -1,14 +1,11 @@
-
-import { Container } from "react-bootstrap";
 import { Route, Routes } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import PasswordReset from "./pages/PasswordReset";
 import AuthRoute from "./components/AuthRoute";
-import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
 import { useAuth } from "../contexts/auth/AuthProvider";
-
+import Home from "./pages/Home";
 
 import { AuthProvider } from "../contexts/Auth/auth_context.jsx";
 import Nav from "./components/nav.jsx";
@@ -16,12 +13,6 @@ import Marketplace from "./components/marketplace.jsx";
 import Cart from "./components/cart.jsx";
 import UserTickets from "./components/users_tickets.jsx";
 import IndividualTicket from "./components/individual_ticket.jsx";
-import Home from "./components/home.jsx";
-import SignUp from "./components/auth/signup.jsx";
-import LogIn from "./components/auth/login.jsx";
-import axios from "axios";
-import TicketingHome from "./components/authorised_home.jsx";
-
 
 // export default function App() {
 //   return (
@@ -70,7 +61,7 @@ export default function App() {
           </Routes>
         </div>
       </div>
-    </AuthProvider>
+    </>
   );
 }
 
