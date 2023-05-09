@@ -79,9 +79,13 @@ const Register = () => {
               </Alert>
             )}
             <div className="text-center mt-2">
-              <Button disabled={loading} type="submit" className="w-50">
+              <button
+                disabled={loading}
+                type="submit"
+                className="bg-purple-700 px-8 py-1 text-white rounded"
+              >
                 Register
-              </Button>
+              </button>
             </div>
           </Form>
         </Card.Body>
