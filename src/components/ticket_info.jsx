@@ -16,21 +16,23 @@ const TicketInfo = ({ ticket, state }) => {
   }, [ticket, state]);
 
   return (
-    <div>
-      <div className="flex w-full justify-between text-5xl font-extrabold">
-        <p className="mb-2 uppercase">{event_name}</p>
-        <p className="text-purple-700">{`£${price}`}</p>
+    <div className="flex h-full flex-col justify-between">
+      <div>
+        <div className="flex w-full justify-between text-5xl font-extrabold">
+          <p className="mb-2 uppercase">{event_name}</p>
+          <p className="text-purple-700">{`£${price}`}</p>
+        </div>
+        <p className="text-xl font-light text-gray-600">{`${address}, ${postcode}`}</p>
+        <p className="text-xl font-light text-gray-600">{`Start: ${startDateFormatted}, ${startTimeFormatted}`}</p>
+        <p className="text-xl font-light text-gray-600 mb-8">
+          {!end ||
+          (startDateFormatted === endDateFormatted &&
+            startTimeFormatted === endTimeFormatted)
+            ? ""
+            : `End: ${endDateFormatted}, ${endTimeFormatted}`}
+        </p>
+        <p className="text-xl font-light">{description}</p>
       </div>
-      <p className="text-xl font-light text-gray-600">{`${address}, ${postcode}`}</p>
-      <p className="text-xl font-light text-gray-600">{`Start: ${startDateFormatted}, ${startTimeFormatted}`}</p>
-      <p className="text-xl font-light text-gray-600 mb-8">
-        {!end ||
-        (startDateFormatted === endDateFormatted &&
-          startTimeFormatted === endTimeFormatted)
-          ? ""
-          : `End: ${endDateFormatted}, ${endTimeFormatted}`}
-      </p>
-      <p className="text-xl font-light">{description}</p>
     </div>
   );
 };
