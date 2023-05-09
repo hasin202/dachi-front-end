@@ -12,6 +12,7 @@ import Marketplace from "./components/marketplace.jsx";
 import Cart from "./components/cart/cart.jsx";
 import UserTickets from "./components/ticket_components/users_tickets.jsx";
 import IndividualTicket from "./components/ticket_components/individual_ticket.jsx";
+import PostTicket from "./components/ticket_components/post_ticket.jsx";
 
 export default function App() {
   const { auth, signOut } = useAuth();
@@ -33,6 +34,7 @@ export default function App() {
               <Route path="cart/:ticket_id" element={<IndividualTicket />} />
               <Route path="cart" element={<Cart />} />
               <Route path="my-tickets" element={<UserTickets />} />
+              <Route path="my-tickets/post-ticket" element={<PostTicket />} />
             </Route>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
