@@ -9,6 +9,7 @@ const PostTicket = () => {
   const addressRef = useRef("");
   const postcodeRef = useRef("");
   const descriptionRef = useRef("");
+  const priceRef = useRef(0);
   const [formResult, setFormResult] = useState("");
 
   const handleSubmit = (event) => {
@@ -70,9 +71,9 @@ const PostTicket = () => {
               placeholder="£ Price"
               className="px-4 w-1/6 bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
               min={0}
-              max={100}
-              step={1}
               required
+              ref={priceRef}
+              onChange={(event) => (priceRef.current = event.target.value)}
             />
           </div>
           <div className="flex w-full gap-4">
