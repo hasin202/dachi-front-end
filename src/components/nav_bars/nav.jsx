@@ -1,20 +1,8 @@
 import { NavLink } from "react-router-dom";
 
 const Nav = () => {
-  const linkNames = [
-    "Home",
-    "Marketplace",
-    "Cart",
-    "My Tickets",
-    "Card Details",
-  ];
-  const linkPaths = [
-    "/",
-    "/marketplace",
-    "/cart",
-    "/my-tickets",
-    "/card-details",
-  ];
+  const linkNames = ["Home", "Marketplace", "Cart", "My Tickets"];
+  const linkPaths = ["/", "/marketplace", "/cart", "/my-tickets"];
 
   return (
     <div className="w-1/3 pr-12 py-8 border-r border-gray-400 h-3/4">
