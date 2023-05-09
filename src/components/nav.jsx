@@ -22,7 +22,7 @@ const Nav = () => {
   };
 
   return (
-    <div className="w-1/3 pr-12 py-8 border-r border-gray-400">
+    <div className="w-1/3 pr-12 py-8 border-r border-gray-400 h-3/4">
       <p className="text-3xl font-black mb-4">DACHI</p>
       <nav className="flex flex-col gap-1 text-xl">
         {linkNames.map((link, i) => (
