@@ -3,14 +3,14 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import PasswordReset from "./pages/PasswordReset";
 import AuthRoute from "./components/AuthRoute";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/nav_bars/NavBar";
 import { useAuth } from "../contexts/auth/AuthProvider";
 import Home from "./pages/Home";
 
 import { AuthProvider } from "../contexts/Auth/auth_context.jsx";
-import Nav from "./components/nav.jsx";
+import Nav from "./components/nav_bars/nav.jsx";
 import Marketplace from "./components/marketplace.jsx";
-import Cart from "./components/cart.jsx";
+import Cart from "./components/cart/cart.jsx";
 import UserTickets from "./components/users_tickets.jsx";
 import IndividualTicket from "./components/individual_ticket.jsx";
 

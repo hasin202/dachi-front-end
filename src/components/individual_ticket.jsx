@@ -4,7 +4,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Error from "./error";
 import axios from "axios";
 import TicketInfo from "./ticket_info";
-import CartButton from "./cart_button";
+import CartButton from "./cart/cart_button";
 
 const IndividualTicket = () => {
   const { addToCart, removeFromCart } = useContext(cartContext);
