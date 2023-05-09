@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Alert, Button, Card, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthProvider";
+import { useAuth } from "../../contexts/auth/AuthProvider";
 
 const Login = () => {
   const emailRef = useRef(null);
@@ -56,14 +56,21 @@ const Login = () => {
               </Alert>
             )}
             <div className="text-center mt-2">
-              <Button disabled={loading} type="submit" className="w-50">
+              <button
+                className="bg-purple-700 px-8 py-1 text-white rounded"
+                disabled={loading}
+                type="submit"
+              >
                 Login
-              </Button>
+              </button>
             </div>
           </Form>
         </Card.Body>
         <div className="w-100 text-center mt-2">
           New User? <Link to={"/register"}>Register</Link>
+        </div>
+        <div className="w-100 text-center mt-2">
+          Forgot Password? <Link to={"/passwordreset"}>Click Here</Link>
         </div>
       </Card>
     </>

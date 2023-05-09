@@ -2,10 +2,11 @@ import { Container } from "react-bootstrap";
 import { Route, Routes } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import PasswordReset from "./pages/PasswordReset";
 import AuthRoute from "./components/AuthRoute";
 import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
-import { useAuth } from "../contexts/AuthProvider";
+import { useAuth } from "../contexts/auth/AuthProvider";
 
 import Nav from "./components/nav.jsx";
 import Marketplace from "./components/marketplace.jsx";
@@ -57,6 +58,7 @@ export default function App() {
             </Route>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/passwordreset" element={<PasswordReset />} />
           </Routes>
         </div>
       </div>
